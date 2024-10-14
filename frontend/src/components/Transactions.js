@@ -30,13 +30,26 @@ const FuelTransactions = () => {
             }
         };
     }, [socket]);
+    const styles = {
+        olist:{
+            display:"flex",
+            flexDirection : "row",
+            border:5,
+            listStyleType : 'None',
+            flexWrap: 'wrap',
+        },
+        ilist:{
+            textAlign:"justify",
+            padding: 40,
+        }
+    }
 
     return (
         <div>
             <h2>Recent Fuel Transactions</h2>
-            <ul>
+            <ul style={styles.olist}>
                 {transactions.map(transaction => (
-                    <li key={transaction.transaction_id}>
+                    <li key={transaction.transaction_id} style={styles.ilist}>
                         <strong>Transaction ID:</strong> {transaction.transaction_id} <br />
                         <strong>Fuel Type:</strong> {transaction.fuelType} <br />
                         <strong>Quantity Sold:</strong> {transaction.quantity} liters <br />
@@ -46,7 +59,6 @@ const FuelTransactions = () => {
                         <strong>Employee ID:</strong> {transaction.employee_id} <br />
                         <strong>Pump ID:</strong> {transaction.pump_id} <br />
                         <strong>Date:</strong> {new Date(transaction.transactionDate).toLocaleString()}
-                        <hr />
                     </li>
                 ))}
             </ul>

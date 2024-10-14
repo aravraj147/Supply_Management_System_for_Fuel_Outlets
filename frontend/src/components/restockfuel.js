@@ -41,13 +41,25 @@ const RestockRequests = () => {
       }
     };
   }, [socket]);
-
+  const styles = {
+    olist:{
+        display:"flex",
+        flexDirection : "row",
+        border:5,
+        listStyleType : 'None',
+        flexWrap: 'wrap',
+    },
+    ilist:{
+        textAlign:"justify",
+        padding: 40,
+    }
+}
   return (
     <div>
       <h2>Restock Requests</h2>
-      <ul>
+      <ul style={styles.olist}>
         {requests.map((request) => (
-          <li key={request._id}>
+          <li key={request._id} style={styles.ilist}>
             <p><strong>Branch ID:</strong> {request.branch_id}</p>
             <p><strong>Fuel Type:</strong> {request.fuelType}</p>
             <p><strong>Requested Quantity:</strong> {request.requested_quantity}</p>
@@ -55,7 +67,6 @@ const RestockRequests = () => {
             <p><strong>Requested At:</strong> {new Date(request.requested_at).toLocaleString()}</p>
             <p><strong>Expected Refill Date:</strong> {new Date(request.expected_refill_date).toLocaleString()}</p>
             <p><strong>Confirmed At:</strong> {request.confirmed_at ? new Date(request.confirmed_at).toLocaleString() : 'Not confirmed'}</p>
-            <hr/>
           </li>
         ))}
       </ul>

@@ -44,6 +44,8 @@ const ManageFuelStocks = () => {
     return (
         <div>
             <h3>Fuel Stocks</h3>
+            <center><b>Minimum Threshold Quantity(For all Types-100)</b></center>
+            <br/>
             {stocks.length === 0 ? (
                 <div>Loading or No stocks available.</div>
             ) : (
@@ -55,7 +57,7 @@ const ManageFuelStocks = () => {
                             <th>Location</th>
                             <th>Petrol (liters)</th>
                             <th>Diesel (liters)</th>
-                            <th>CNG (liters)</th>
+                            <th>CNG (kilograms(kg))</th>
                         </tr>
                     </thead>
                     <tbody>
